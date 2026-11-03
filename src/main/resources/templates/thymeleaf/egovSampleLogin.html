@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="#{login.title}"></title>
+
+	<!-- KRDS CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/component/output.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/egovframe.css}"/>
+	<script th:inline="javascript" th:src="@{/js/jquery.min.js}"></script>
+	<script th:inline="javascript" th:src="@{/js/egovframework/common.js}" defer></script>
+
+	<script th:inline="javascript" defer>
+		function sampleLoginView() {
+	        const visibleOff = document.querySelector(".krds-btn.svg-icon.ico-pw-visible");
+	        const visibleOn = document.querySelector(".krds-btn.svg-icon.ico-pw-visible-on");
+	        const passwordField = document.getElementById('password');
+	        if (passwordField.type === 'password') {
+	            visibleOff.classList.replace("ico-pw-visible","ico-pw-visible-on");
+	            passwordField.type = 'text';
+	        } else {
+	            visibleOn.classList.replace("ico-pw-visible-on","ico-pw-visible");
+	            passwordField.type = 'password';
+	        }
+	    }
+
+		function sampleLogin() {
+			const userId = document.getElementById('username').value;
+			const userPw = document.getElementById('password').value;
+
+			if (userId.length === 0) {
+	            alert('[(#{login.validate.idCheck})]');
+	            return false;
+	        } else if (userPw.length === 0) {
+	            alert('[(#{login.validate.passCheck})]');
+	            return false;
+	        } else {
+				document.getElementById('loginForm').submit();
+			}
+		}
+	</script>
+</head>
+
+<body>
+<div id="container" class="inner">
+
+	<!-- Page Title -->
+	<h2 class="heading-large" th:text="#{login.title}"></h2>
+
+	<div id="content_pop">
+		<!-- Spring Security가 자동으로 처리하는 로그인 폼 -->
+		<form id="loginForm" name="loginForm" method="post" th:action="@{/sample/loginProcess}" th:object="${loginVO}">
+	        <div class="tab-conts-wrap">
+	            <section id="panel_login_01" aria-labelledby="tab_login_01" class="tab-conts active" data-quick-nav="false">
+	                <div class="login-form-area type-tab">
+	                    <div class="login-wrap">
+	                        <fieldset>
+	                            <legend th:text="#{login.form.legend}">로그인 폼</legend>
+	                            <div class="fieldset">
+	                                <div class="form-group">
+	                                    <div class="form-tit">
+	                                        <label for="userId">[(#{login.id})]</label>
+	                                    </div>
+	                                    <div class="form-conts">
+	                                        <input type="text" id="username" name="username" class="krds-input" autocomplete="on" maxlength="30" th:placeholder="#{login.validate.idCheck}">
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <div class="form-tit">
+	                                        <label for="userPw">[(#{login.password})]</label>
+	                                    </div>
+	                                    <div class="form-conts btn-ico-wrap">
+	                                        <input type="password" id="password" name="password" maxlength="12" class="krds-input" th:placeholder="#{login.validate.passCheck}">
+	                                        <span class="sr-only" th:text="#{login.showPassword}"></span>
+	                                        <button type="button" class="krds-btn svg-icon ico-pw-visible" th:onclick="sampleLoginView()"></button>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <button type="button" class="krds-btn large primary" th:onclick="sampleLogin()" th:text="#{login.title}"></button>
+	                                </div>
+	                            </div>
+	                        </fieldset>
+	                    </div>
+	                </div>
+	            </section>
+	        </div>
+		</form>
+	</div>
+
+</div>
+
+</body>
+</html>

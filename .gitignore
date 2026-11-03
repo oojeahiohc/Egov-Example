@@ -1,0 +1,49 @@
+### Maven / Build 산출물 ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Java 컴파일 파일 ###
+*.class
+
+### VS Code ###
+.vscode/
+*.code-workspace
+
+### Eclipse / eGovFrame DevTool 설정 ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.classpath
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+### 로그 및 임시 파일 ###
+*.log
+logs/
+
+### OS 생성 파일 ###
+Thumbs.db
+Desktop.ini
+.DS_Store

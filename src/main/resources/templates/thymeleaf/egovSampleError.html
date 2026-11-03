@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title th:text="#{login.error.title}">로그인 실패</title>
+
+	<!-- KRDS CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/component/output.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/egovframe.css}"/>
+	<script th:inline="javascript" th:src="@{/js/jquery.min.js}"></script>
+	<script th:inline="javascript" th:src="@{/js/egovframework/common.js}" defer></script>
+
+	<style>
+        .error-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+        }
+        .error-icon {
+            text-align: center;
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .error-content {
+            text-align: center;
+        }
+        .btn-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container" class="inner">
+	<div class="error-container">
+
+		<!-- Access Denied Error -->
+        <div th:if="${errorType == 'accessDenied'}">
+            <div class="error-content">
+                <h2 class="heading-large" th:text="#{login.error.accessDenied.title}">접근 권한 없음</h2>
+                <div class="alert alert-warning" style="padding: 20px; margin: 20px 0; border: 1px solid #ffc107; background-color: #fff3cd; color: #856404; border-radius: 4px;">
+                    <p style="margin: 0;">
+                        <strong th:text="#{login.error.accessDenied.message}">이 기능에 대한 권한이 없습니다. 관리자에게 문의하세요.</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a th:href="@{/}" class="krds-btn large primary" th:text="#{login.error.backToList}">목록으로</a>
+            </div>
+        </div>
+
+		<!-- Login Failure Error -->
+        <div th:if="${errorType == 'loginFailure'}">
+            <div class="error-content">
+                <h2 class="heading-large" th:text="#{login.error.title}">로그인 실패</h2>
+                <div class="alert alert-error" style="padding: 20px; margin: 20px 0; border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; border-radius: 4px;">
+                    <p style="margin: 0;">
+                        <strong th:text="#{login.error.message}">아이디 또는 비밀번호가 올바르지 않습니다.</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a th:href="@{/sample/login}" class="krds-btn large primary" th:text="#{login.error.backToLogin}">로그인 페이지로</a>
+            </div>
+        </div>
+
+		<!-- Method Not Allowed Error -->
+        <div th:if="${errorType == 'methodNotAllowed'}">
+            <div class="error-content">
+                <h2 class="heading-large">잘못된 요청 방법</h2>
+                <div class="alert alert-error" style="padding: 20px; margin: 20px 0; border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; border-radius: 4px;">
+                    <p style="margin: 0;">
+                        <strong>허용되지 않은 HTTP 메서드로 요청하셨습니다. POST 메서드로만 접근 가능한 페이지입니다.</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a th:href="@{/}" class="krds-btn large primary" th:text="#{login.error.backToList}">목록으로</a>
+            </div>
+        </div>
+
+		<!-- Default Error (fallback) -->
+        <div th:if="${errorType == 'error'}">
+            <div class="error-content">
+                <h2 class="heading-large" th:text="#{login.error.title}">로그인 실패</h2>
+                <div class="alert alert-error" style="padding: 20px; margin: 20px 0; border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; border-radius: 4px;">
+                    <p style="margin: 0;">
+                        <strong th:text="#{fail.common.msg}">에러가 발생했습니다!</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a th:href="@{/}" class="krds-btn large primary" th:text="#{login.error.backToList}">목록으로</a>
+            </div>
+        </div>
+
+	</div>
+</div>
+</body>
+</html>
