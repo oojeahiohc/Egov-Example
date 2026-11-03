@@ -8,7 +8,7 @@
     - apache-maven-3.10.0-bin.zip
     - 환경 변수 등록
     - VSCode 재실행 후 mvn -version 버전 확인
-        - 안 될 시
+        - 실패 시
             ```
             #### PowerShell 창에서 바로 환경 변수 갱신
             $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
@@ -33,6 +33,8 @@
 - 파일 구조
     - Controller
         - src/main/java/egovframework/example/sample/web/EgovSampleController.java
+    - Service
+        - src/main/java/egovframework/example/sample/service
 - Endpoint 예외 처리 후 컨트롤러 확인
     1. application.properties의 org.egovframe.access.excludeList에 엔드포인트(권한 예외 URL) 추가
     2. Controller에 테스트용 메서드 추가
