@@ -123,9 +123,10 @@ public class EgovSampleController {
 		return "egovSampleRegister";
 	}
 
+	// add.html
 	@GetMapping("/sample/add")
-	public String form(@ModelAttribute SampleVO sampleVO, Model model) {
-		return "egovSampleRegister";
+	public String form() {
+		return "add";
 	}
 
 	@PostMapping("/sample/add")

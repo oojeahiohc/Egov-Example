@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>카테고리 등록</h2>
+    <form method="post" th:action="@{/sample/add}">
+        <p>
+            카테고리명: <input type="text" id="name" name="name">
+        </p>
+        <p>
+            카테고리 설명: <input type="text" id="description" name="description">
+        </p>
+        <p>
+            카테고리 사용 여부:
+            <select id="useYn" name="useYn">
+                <option value="Y">사용</option>
+                <option value="N">미사용</option>
+            </select>
+        </p>
+        <p>
+            등록자: <input type="text" id="regUser" name="regUser">
+        </p>
+        <button type="submit">등록</button>
+        <a th:href="@{/sample/list}">목록</a>
+    </form>
+</body>
+</html>

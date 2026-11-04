@@ -106,6 +106,8 @@
 	<div class="page-header">
 		<h2 class="heading-large" th:text="#{list.sample}"></h2>
 		<div class="user-info" th:if="${username != null}">
+			<!-- 등록 테스트 -->
+			<a th:href="@{/sample/add}" class="">카테고리 등록</a>
 			<span class="user-id">
 				<span th:text="#{login.title}">로그인</span>:
 				<strong th:text="${username}" th:title="#{login.username.default}">사용자</strong>
